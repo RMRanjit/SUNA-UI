@@ -1,16 +1,16 @@
 import { useState, useContext, useEffect } from 'react';
 import propTypes from 'prop-types';
-import { Tabs, Tab } from '@mui/material';
+import { Tabs, Tab, Divider } from '@mui/material';
 
 // project imports
-import { CatalogList } from './CatalogList';
+// import { CatalogList } from './CatalogList';
 import DesignerMenu from './DesignerMenu';
 import FlowPanel from './FlowPanel';
 import ItemGridPanel from './ItemGridPanel';
 
 import { currencyFormat } from 'utils/generalUtils';
 import { NodesContext } from './Nodes/NodesContext';
-// import ActionPanel from './Archive/ActionPanel';
+import ActionPanel from './ActionPanel';
 // import SpeedDialPanel from './SpeedDialPanel';
 import TotalPriceLightCard from './TotalPriceLightCard';
 
@@ -51,14 +51,23 @@ const DesignerComponent = ({ showCatalog = true }) => {
         </div>
 
         {showCatalog && (
-          <div style={{ display: 'flex', flexDirection: 'column' }} draggable>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', marginBottom: '10px', fontSize: '100%', textTransform: 'uppercase', letterSpacing: '2px' }}>
+              <TotalPriceLightCard Price={currencyFormat(totalPrice)} />
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', overflowX: 'hidden', overflowY: 'auto' }}>
               {/* <CatalogList></CatalogList> */}
               <DesignerMenu />
             </div>
-            <div style={{ display: 'flex', marginBottom: '10px', fontSize: '100%', textTransform: 'uppercase', letterSpacing: '2px' }}>
-              <TotalPriceLightCard Price={currencyFormat(totalPrice)} />
-            </div>
+            {/* <div
+              style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                letterSpacing: '2px'
+              }}
+            >
+              <ActionPanel />
+            </div> */}
           </div>
         )}
       </div>
@@ -71,7 +80,7 @@ DesignerComponent.defaultProps = {
 };
 
 DesignerComponent.propTypes = {
-  showCatalog: PropTypes.bool
+  showCatalog: propTypes.bool
 };
 
 export default DesignerComponent;

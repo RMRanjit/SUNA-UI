@@ -11,6 +11,7 @@ import TotalIncomeCard from 'ui-component/cards/Skeleton/TotalIncomeCard';
 // assets
 import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone';
 import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
+import ActionPanel from './ActionPanel';
 
 // styles
 const CardWrapper = styled(MainCard)(({ theme }) => ({
@@ -86,6 +87,9 @@ const TotalPriceLightCard = ({ isLoading, Price = 0 }) => {
                   }
                   secondary={<Typography variant="h2">{Price}</Typography>}
                 />
+              </ListItem>
+              <ListItem disableGutters sx={{ py: 0 }}>
+                <ActionPanel />
               </ListItem>
             </List>
           </Box>

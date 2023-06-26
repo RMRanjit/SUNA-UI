@@ -2,7 +2,7 @@
   "name": "simple-unified-network-access",
   "version": "0.0.1",
   "private": true,
-  "homepage": "http://RMRanjit.github.io/SUNA-UI",
+  "homepage": ".",
   "dependencies": {
     "@emotion/cache": "^11.9.3",
     "@emotion/react": "^11.9.3",
@@ -31,6 +31,7 @@
     "react-scripts": "^5.0.1",
     "reactflow": "^11.7.2",
     "redux": "^4.2.0",
+    "serve": "^14.2.0",
     "styled-components": "^6.0.0-rc.3",
     "yup": "^0.32.11"
   },

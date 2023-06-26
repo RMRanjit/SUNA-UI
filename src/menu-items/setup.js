@@ -1,5 +1,14 @@
 // assets
-import { IconTypography, IconPalette, IconShadow, IconWindmill, IconBrandCodepen, IconApi } from '@tabler/icons';
+import {
+  IconTypography,
+  IconPalette,
+  IconShadow,
+  IconWindmill,
+  IconBrandCodepen,
+  IconApi,
+  IconComponents,
+  IconAffiliate
+} from '@tabler/icons';
 
 // constant
 const icons = {
@@ -8,6 +17,8 @@ const icons = {
   IconShadow,
   IconWindmill,
   IconBrandCodepen,
+  IconAffiliate,
+  IconComponents,
   IconApi
 };
 
@@ -64,6 +75,22 @@ const setup = {
       type: 'item',
       url: '/setup/application',
       icon: icons.IconApi,
+      breadcrumbs: false
+    },
+    {
+      id: 'setup-Components',
+      title: 'Components',
+      type: 'item',
+      url: '/setup/components',
+      icon: icons.IconComponents,
+      breadcrumbs: false
+    },
+    {
+      id: 'setup-Integration',
+      title: 'Integration',
+      type: 'item',
+      url: '/setup/integration',
+      icon: icons.IconAffiliate,
       breadcrumbs: false
     }
   ]

@@ -21,6 +21,8 @@ const SetupBusinessUnit = Loadable(lazy(() => import('views/setup/businessUnit')
 const SetupProgram = Loadable(lazy(() => import('views/setup/Program')));
 const SetupProject = Loadable(lazy(() => import('views/setup/Project')));
 const SetupApplication = Loadable(lazy(() => import('views/setup/Application')));
+const SetupAppComponents = Loadable(lazy(() => import('views/setup/AppComponent')));
+const SetupIntegration = Loadable(lazy(() => import('views/setup/AppIntegrations')));
 const BuildBlueprint = Loadable(lazy(() => import('views/build/BlueprintPage')));
 
 //designer routings
@@ -96,6 +98,14 @@ const MainRoutes = {
         {
           path: '/setup/application',
           element: <SetupApplication />
+        },
+        {
+          path: '/setup/components',
+          element: <SetupAppComponents />
+        },
+        {
+          path: '/setup/integration',
+          element: <SetupIntegration />
         }
       ]
     },

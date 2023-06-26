@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 
 // material-ui
-
 import {
   Button,
   FormControlLabel,
@@ -17,23 +16,60 @@ import {
   Tooltip
 } from '@mui/material';
 
-import { regions } from 'dummy_data/regions';
-
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 // project imports
 import { MaterialReactTable } from 'material-react-table';
 
+import { displayIcon } from 'utils/generalUtils';
+
 const data = [
-  { name: 'PFNA', subscription: 'PFNA-Subscription', Activated: true },
-  { name: 'PBNA', subscription: 'PBNA-Subscription', Activated: true },
-  { name: 'AMESA', subscription: 'AMESA-Subscription', Activated: true },
-  { name: 'ESSA', subscription: 'CORP-IT-Subscription', Activated: true },
-  { name: 'CORP-IT', subscription: 'CORP-IT-Subscription', Activated: true }
+  { name: 'Compute-01', Application: 'Application 01', itemType: 'compute' },
+  { name: 'Storage-01', Application: 'Application 01', itemType: 'storage' },
+  { name: 'Database-01', Application: 'Application 01', itemType: 'database' },
+  { name: 'Compute-02', Application: 'Application 02', itemType: 'compute' },
+  { name: 'Storage-02', Application: 'Application 02', itemType: 'storage' },
+  { name: 'Database-02', Application: 'Application 02', itemType: 'database' },
+  { name: 'Compute-031', Application: 'Application 03', itemType: 'compute' },
+  { name: 'Compute-032', Application: 'Application 04', itemType: 'compute' },
+  { name: 'Storage-03', Application: 'Application 03', itemType: 'storage' },
+  { name: 'Database-03', Application: 'Application 01', itemType: 'database' },
+  { name: 'Compute-041', Application: 'Application 04', itemType: 'compute' },
+  { name: 'Compute-042', Application: 'Application 04', itemType: 'compute' },
+  { name: 'Storage-04', Application: 'Application 04', itemType: 'storage' },
+  { name: 'Database-04', Application: 'Application 04', itemType: 'database' },
+  { name: 'Compute-06', Application: 'Application 05', itemType: true },
+  { name: 'Compute-05', Application: 'Application 05', itemType: 'compute' },
+  { name: 'Storage-06', Application: 'Application 06', itemType: 'storage' },
+  { name: 'Database-06', Application: 'Application 06', itemType: 'database' },
+  { name: 'Compute-03', Application: 'Application 06', itemType: true },
+  { name: 'Compute-01', Application: 'Application 06', itemType: 'compute' },
+  { name: 'Storage-01', Application: 'Application 06', itemType: 'storage' },
+  { name: 'Database-01', Application: 'Application 06', itemType: 'database' },
+  { name: 'Compute-03', Application: 'Application 07', itemType: true },
+  { name: 'Compute-01', Application: 'Application 07', itemType: 'compute' },
+  { name: 'Storage-01', Application: 'Application 07', itemType: 'storage' },
+  { name: 'Database-01', Application: 'Application 07', itemType: 'database' },
+  { name: 'Compute-03', Application: 'Application 07', itemType: true },
+  { name: 'Compute-01', Application: 'Application 07', itemType: 'compute' },
+  { name: 'Storage-01', Application: 'Application 07', itemType: 'storage' },
+  { name: 'Database-01', Application: 'Application 07', itemType: 'database' },
+  { name: 'Compute-03', Application: 'Application 08', itemType: true },
+  { name: 'Compute-01', Application: 'Application 08', itemType: 'compute' },
+  { name: 'Storage-01', Application: 'Application 08', itemType: 'storage' },
+  { name: 'Database-01', Application: 'Application 08', itemType: 'database' },
+  { name: 'Compute-03', Application: 'Application 09', itemType: true },
+  { name: 'Compute-01', Application: 'Application 09', itemType: 'compute' },
+  { name: 'Storage-01', Application: 'Application 09', itemType: 'storage' },
+  { name: 'Database-01', Application: 'Application 09', itemType: 'database' },
+  { name: 'Compute-03', Application: 'Application 10', itemType: true },
+  { name: 'Compute-01', Application: 'Application 10', itemType: 'compute' },
+  { name: 'Storage-01', Application: 'Application 10', itemType: 'storage' },
+  { name: 'Database-01', Application: 'Application 10', itemType: 'database' }
 ];
 
-const ProgramComponent = () => {
+const AppComponent = () => {
   const [tableData, setTableData] = useState(data);
   const [openAddDialog, setOpenAddDialog] = useState(false);
 
@@ -48,27 +84,20 @@ const ProgramComponent = () => {
         size: 150
       },
       {
-        accessorKey: 'subscription',
-        header: 'Subscription',
+        accessorKey: 'Application',
+        header: 'Application',
         size: 150
       },
 
       {
-        accessorKey: 'Activated',
-        header: 'Status',
+        accessorKey: 'itemType',
+        header: 'itemType',
         Cell: ({ cell, renderedCellValue }) => {
           let value = cell.getValue();
           return (
-            <FormControlLabel
-              label={value ? 'Active' : 'Inactive'}
-              value={value ? 'Active' : 'Inactive'}
-              control={<Switch color="primary" checked={value} value={value ? 'Yes' : 'No'} />}
-              onChange={(event) => {
-                event.target.value = event.target.checked ? 'Yes' : 'No';
-                //updateValue(event.target.value === 'Inactive' ? false : true);
-                //console.log(event);
-              }}
-            />
+            <>
+              {displayIcon(value)} {value}
+            </>
           );
         }
       }
@@ -124,13 +153,13 @@ const ProgramComponent = () => {
 
           return (
             <div>
-              <Tooltip arrow title="Add Items">
+              {/* <Tooltip arrow title="Add Items">
                 <span>
                   <IconButton>
                     <AddBoxIcon onClick={handleAddDialogOpen} />
                   </IconButton>
                 </span>
-              </Tooltip>
+              </Tooltip> */}
               <Tooltip arrow title="Remove Items">
                 <span>
                   <IconButton disabled={table.getSelectedRowModel().flatRows.length === 0}>
@@ -155,11 +184,11 @@ const ProgramComponent = () => {
         })}
       />
       <Dialog open={openAddDialog} onClose={handleAddDialogClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">New Business Unit</DialogTitle>
+        <DialogTitle id="form-dialog-title">New Program</DialogTitle>
         <DialogContent>
-          <DialogContentText>Add new Organizations here..</DialogContentText>
+          <DialogContentText>Add new projects here..</DialogContentText>
           <TextField autoFocus margin="dense" id="name" label="Name" type="text" fullWidth />
-          <TextField autoFocus margin="dense" id="organization" label="Organization" type="text" fullWidth />
+          <TextField autoFocus margin="dense" id="program" label="Program" type="text" fullWidth />
           <InputLabel>Active</InputLabel>
           <Switch color="primary" checked={false} value={false} label="Active" />
         </DialogContent>
@@ -176,4 +205,4 @@ const ProgramComponent = () => {
   );
 };
 
-export default ProgramComponent;
+export default AppComponent;

@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 
 // material-ui
-
 import {
   Button,
   FormControlLabel,
@@ -17,23 +16,29 @@ import {
   Tooltip
 } from '@mui/material';
 
-import { regions } from 'dummy_data/regions';
-
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 // project imports
 import { MaterialReactTable } from 'material-react-table';
 
-const data = [
-  { name: 'PFNA', subscription: 'PFNA-Subscription', Activated: true },
-  { name: 'PBNA', subscription: 'PBNA-Subscription', Activated: true },
-  { name: 'AMESA', subscription: 'AMESA-Subscription', Activated: true },
-  { name: 'ESSA', subscription: 'CORP-IT-Subscription', Activated: true },
-  { name: 'CORP-IT', subscription: 'CORP-IT-Subscription', Activated: true }
-];
+import { displayIcon } from 'utils/generalUtils';
 
-const ProgramComponent = () => {
+const data = [
+  { sourceApplication: 'Application-01', destinationApplication: 'Application-03', integrationType: 'Batch', Activated: true },
+  { sourceApplication: 'Application-01', destinationApplication: 'Application-03', integrationType: 'Batch', Activated: false },
+  { sourceApplication: 'Application-01', destinationApplication: 'Application-03', integrationType: 'API' },
+  { sourceApplication: 'Application-02', destinationApplication: 'Application-01', integrationType: 'Batch' },
+  { sourceApplication: 'Application-02', destinationApplication: 'Application-01', integrationType: 'Unknown' },
+  { sourceApplication: 'Application-02', destinationApplication: 'Application-01', integrationType: 'Unknown' },
+  { sourceApplication: 'Application-03', destinationApplication: 'Application-01', integrationType: '' },
+  { sourceApplication: 'Application-03', destinationApplication: 'Application-01', integrationType: '' },
+  { sourceApplication: 'Application-03', destinationApplication: 'Application-01', integrationType: '' },
+  { sourceApplication: 'Application-03', destinationApplication: 'Application-02', integrationType: '' },
+  { sourceApplication: 'Application-03', destinationApplication: 'Application-02', integrationType: '' },
+  { sourceApplication: 'Application-03', destinationApplication: 'Application-02', integrationType: '' }
+];
+const AppIntegration = () => {
   const [tableData, setTableData] = useState(data);
   const [openAddDialog, setOpenAddDialog] = useState(false);
 
@@ -43,34 +48,19 @@ const ProgramComponent = () => {
   const columns = useMemo(
     () => [
       {
-        accessorKey: 'name', //access nested data with dot notation
-        header: 'Name',
+        accessorKey: 'sourceApplication', //access nested data with dot notation
+        header: 'Source',
         size: 150
       },
       {
-        accessorKey: 'subscription',
-        header: 'Subscription',
+        accessorKey: 'destinationApplication',
+        header: 'Destination',
         size: 150
       },
 
       {
-        accessorKey: 'Activated',
-        header: 'Status',
-        Cell: ({ cell, renderedCellValue }) => {
-          let value = cell.getValue();
-          return (
-            <FormControlLabel
-              label={value ? 'Active' : 'Inactive'}
-              value={value ? 'Active' : 'Inactive'}
-              control={<Switch color="primary" checked={value} value={value ? 'Yes' : 'No'} />}
-              onChange={(event) => {
-                event.target.value = event.target.checked ? 'Yes' : 'No';
-                //updateValue(event.target.value === 'Inactive' ? false : true);
-                //console.log(event);
-              }}
-            />
-          );
-        }
+        accessorKey: 'integrationType',
+        header: 'Type'
       }
     ],
     []
@@ -124,13 +114,13 @@ const ProgramComponent = () => {
 
           return (
             <div>
-              <Tooltip arrow title="Add Items">
+              {/* <Tooltip arrow title="Add Items">
                 <span>
                   <IconButton>
                     <AddBoxIcon onClick={handleAddDialogOpen} />
                   </IconButton>
                 </span>
-              </Tooltip>
+              </Tooltip> */}
               <Tooltip arrow title="Remove Items">
                 <span>
                   <IconButton disabled={table.getSelectedRowModel().flatRows.length === 0}>
@@ -155,11 +145,11 @@ const ProgramComponent = () => {
         })}
       />
       <Dialog open={openAddDialog} onClose={handleAddDialogClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">New Business Unit</DialogTitle>
+        <DialogTitle id="form-dialog-title">New Program</DialogTitle>
         <DialogContent>
-          <DialogContentText>Add new Organizations here..</DialogContentText>
+          <DialogContentText>Add new projects here..</DialogContentText>
           <TextField autoFocus margin="dense" id="name" label="Name" type="text" fullWidth />
-          <TextField autoFocus margin="dense" id="organization" label="Organization" type="text" fullWidth />
+          <TextField autoFocus margin="dense" id="program" label="Program" type="text" fullWidth />
           <InputLabel>Active</InputLabel>
           <Switch color="primary" checked={false} value={false} label="Active" />
         </DialogContent>
@@ -176,4 +166,4 @@ const ProgramComponent = () => {
   );
 };
 
-export default ProgramComponent;
+export default AppIntegration;

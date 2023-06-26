@@ -43,13 +43,13 @@ function ActionPanel(props) {
       >
         Deploy Design
       </Button>
-      <Button //variant="outlined"
+      {/* <Button //variant="outlined"
         color="secondary"
         size="small"
         onClick={handleSave}
       >
         Save for later
-      </Button>
+      </Button> */}
     </div>
   );
 }

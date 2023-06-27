@@ -1,4 +1,15 @@
-import { IconBrandTabler, IconCpu, IconFolder, IconDatabase, IconMessage, IconMailFast } from '@tabler/icons';
+import {
+  IconBrandTabler,
+  IconCpu,
+  IconFolder,
+  IconDatabase,
+  IconMessage,
+  IconMathFunction,
+  IconMailFast,
+  IconApi,
+  IconLambda,
+  IconSettings
+} from '@tabler/icons';
 import { Avatar } from '@mui/material';
 /*to be removed after the back end is implemented */
 import { simpleBlueprint, MicroServices, Datawarehouse, PreCDP } from '../assets/Blueprint/simpleBlueprint';
@@ -39,11 +50,27 @@ export const displayIcon = (type) => {
       borderColor = backgroundColor;
       break;
     case 'function':
-      icon = <IconMailFast stroke={1.5} size="1.3rem" />;
+      icon = <IconMathFunction stroke={1.5} size="1.3rem" />;
       backgroundColor = '#4dc0b5';
       color = '#ffffff';
       borderColor = backgroundColor;
       break;
+    case 'batch':
+    case 'BATCH':
+      icon = <IconSettings stroke={1.5} size="1.3rem" />;
+      backgroundColor = '#3490dc';
+      color = '#000000';
+      borderColor = backgroundColor;
+      break;
+
+    case 'Realtime':
+    case 'API':
+      icon = <IconApi stroke={1.5} size="1.3rem" />;
+      backgroundColor = '#3490dc';
+      color = '#000000';
+      borderColor = backgroundColor;
+      break;
+
     default:
       icon = <IconCpu stroke={1.5} size="1.3rem" />;
       backgroundColor = '#3490dc';

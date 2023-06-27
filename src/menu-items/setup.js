@@ -28,6 +28,7 @@ const setup = {
   id: 'setup',
   title: 'Setup',
   type: 'group',
+  // url: '/setup',
   children: [
     {
       id: 'setup-Subscription',

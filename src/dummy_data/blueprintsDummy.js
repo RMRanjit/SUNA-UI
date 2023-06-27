@@ -29,7 +29,7 @@ export const blueprints = [
   },
   {
     id: 5,
-    name: 'Serverless Architectures',
+    name: 'PreCDP',
     image: 'https://picsum.photos/100/300', //'/Users/m_106904/Documents/Code/SUNA2.0/SUNA-UI/public/images/Serverless.png',
     description:
       'Deploy Serverless API Gateways across the globe in seconds. Preview every Pull Request and get insights into your API usage with Analytics and Distributed Tracing. Our unique architecture allows you to deploy one Serverless API Gateway per application/branch ...'

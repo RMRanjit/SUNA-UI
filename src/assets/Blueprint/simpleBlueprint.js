@@ -895,3 +895,338 @@ export const Datawarehouse = {
     }
   ]
 };
+
+export const PreCDP = {
+  nodes: [
+    {
+      width: 303,
+      height: 72,
+      id: '1',
+      type: 'itemNode',
+      position: {
+        x: -245.39873035359642,
+        y: -88.41432125168191
+      },
+      data: {
+        Name: 'Event Hub',
+        id: '1',
+        itemID: 12,
+        inputs: [],
+        outputs: [],
+        itemType: 'MessageQueue',
+        NodeType: 'itemNode',
+        price: '5560.41',
+        icon: '../../Images/Queue.png',
+        configuration: '1.05 GB/sec - Ingress 250 TUs',
+        name: 'Premium Event Hub',
+        Destination: 'Azure',
+        OwnerApplication: 'TBD',
+        scriptPath: '/storage/storage-share'
+      },
+      selected: false,
+      positionAbsolute: {
+        x: -245.39873035359642,
+        y: -88.41432125168191
+      },
+      dragging: false
+    },
+    {
+      width: 281,
+      height: 72,
+      id: '2',
+      type: 'itemNode',
+      position: {
+        x: 181.0141344077581,
+        y: 98.4862392948387
+      },
+      data: {
+        Name: 'Landing Zone',
+        id: '2',
+        itemID: 5,
+        inputs: [],
+        outputs: [],
+        itemType: 'storage',
+        NodeType: 'itemNode',
+        price: '119.82',
+        icon: '../../Images/Storage.png',
+        configuration: 'DiskSize P30 Capacity 8192',
+        name: 'Azure Data Lake Storage',
+        Destination: 'Azure',
+        OwnerApplication: 'TBD',
+        scriptPath: '/storage/storage-share'
+      },
+      selected: false,
+      positionAbsolute: {
+        x: 181.0141344077581,
+        y: 98.4862392948387
+      },
+      dragging: false
+    },
+    {
+      width: 281,
+      height: 72,
+      id: '3',
+      type: 'itemNode',
+      position: {
+        x: -225.1151078047048,
+        y: 178.4313408605675
+      },
+      data: {
+        Name: 'Ingest Synapse Pipeline',
+        id: '3',
+        itemID: 15,
+        inputs: [],
+        outputs: [],
+        itemType: 'compute',
+        NodeType: 'itemNode',
+        price: '201.64',
+        icon: '../../Images/Queue.png',
+        configuration: 'Copy Data to Dasta lake storage',
+        name: 'Synapse Pipelines',
+        Destination: 'Azure',
+        OwnerApplication: 'TBD',
+        scriptPath: '/Container/Container'
+      },
+      selected: false,
+      positionAbsolute: {
+        x: -225.1151078047048,
+        y: 178.4313408605675
+      },
+      dragging: false
+    },
+    {
+      width: 281,
+      height: 72,
+      id: '4',
+      type: 'itemNode',
+      position: {
+        x: 612.3067709673943,
+        y: 100.27610721173454
+      },
+      data: {
+        Name: 'Process Data - Synapse Pipeline ',
+        id: '4',
+        itemID: 15,
+        inputs: [],
+        outputs: [],
+        itemType: 'compute',
+        NodeType: 'itemNode',
+        price: '201.64',
+        icon: '../../Images/Queue.png',
+        configuration: 'Pipeline to use the data from landing zone and determine any anomalies',
+        name: 'Synapse Pipeline',
+        Destination: 'Azure',
+        OwnerApplication: 'TBD',
+        scriptPath: '/Container/Container'
+      },
+      selected: false,
+
+      dragging: false
+    },
+    {
+      width: 281,
+      height: 72,
+      id: '10',
+      type: 'itemNode',
+      position: {
+        x: 986,
+        y: 298.68859840951552
+      },
+      data: {
+        Name: 'Anomaly Detector ',
+        id: '10',
+        itemID: 15,
+        inputs: [],
+        outputs: [],
+        itemType: 'compute',
+        NodeType: 'itemNode',
+        price: '201.64',
+        icon: '../../Images/Queue.png',
+        configuration: 'Determine anomalies in the data',
+        name: 'Cognitive Services',
+        Destination: 'Azure',
+        OwnerApplication: 'TBD',
+        scriptPath: '/Container/Container'
+      },
+      selected: false,
+
+      dragging: false
+    },
+    {
+      width: 281,
+      height: 72,
+      id: '5',
+      type: 'itemNode',
+      position: {
+        x: 986,
+        y: 100
+      },
+      data: {
+        Name: 'Validate Data',
+        id: '5',
+        itemID: 5,
+        inputs: [],
+        outputs: [],
+        itemType: 'storage',
+        NodeType: 'itemNode',
+        price: '119.82',
+        icon: '../../Images/Storage.png',
+        configuration: 'Storage for Validated data',
+        name: 'Azure DataLake Storage ',
+        Destination: 'Azure',
+        OwnerApplication: 'TBD',
+        scriptPath: '/storage/storage-share'
+      },
+      selected: false,
+      positionAbsolute: {
+        x: 976.2689903593953,
+        y: 98.68859840951552
+      },
+      dragging: false
+    },
+    {
+      width: 281,
+      height: 72,
+      id: '6',
+      type: 'itemNode',
+      position: {
+        x: 630.0144065612989,
+        y: -96.47670233765285
+      },
+      data: {
+        Name: 'Structured Stream processing',
+        id: '6',
+        itemID: 15,
+        inputs: [],
+        outputs: [],
+        itemType: 'compute',
+        NodeType: 'itemNode',
+        price: '201.64',
+        icon: '../../Images/Queue.png',
+        configuration: 'Processing for Structured data',
+        name: 'Synapse Spark Pool',
+        Destination: 'Azure',
+        OwnerApplication: 'TBD',
+        scriptPath: '/Container/Container'
+      },
+      selected: false,
+      positionAbsolute: {
+        x: 630.0144065612989,
+        y: -96.47670233765285
+      },
+      dragging: false
+    },
+    {
+      width: 281,
+      height: 72,
+      id: '7',
+      type: 'itemNode',
+      position: {
+        x: 1400,
+        y: 98
+      },
+      data: {
+        Name: 'SQL Pool ',
+        id: '7',
+        itemID: 15,
+        inputs: [],
+        outputs: [],
+        itemType: 'database',
+        NodeType: 'itemNode',
+        price: '201.64',
+        icon: '../../Images/Queue.png',
+        configuration: 'Serverless SQL Pool',
+        name: 'Synapse',
+        Destination: 'Azure',
+        OwnerApplication: 'TBD',
+        scriptPath: '/Container/Container'
+      },
+      selected: false,
+
+      dragging: false
+    }
+  ],
+  edges: [
+    {
+      source: '1',
+      sourceHandle: null,
+      target: '2',
+      targetHandle: null,
+      type: 'smoothstep',
+      animated: 'true',
+      id: 'reactflow__edge-1-2'
+    },
+    {
+      source: '3',
+      sourceHandle: null,
+      target: '2',
+      targetHandle: null,
+      type: 'smoothstep',
+      animated: 'true',
+      id: 'reactflow__edge-3-2'
+    },
+    {
+      source: '2',
+      sourceHandle: null,
+      target: '4',
+      targetHandle: null,
+      type: 'smoothstep',
+      animated: 'true',
+      id: 'reactflow__edge-2-4'
+    },
+    {
+      source: '4',
+      sourceHandle: null,
+      target: '5',
+      targetHandle: null,
+      type: 'smoothstep',
+      animated: 'true',
+      id: 'reactflow__edge-4-5'
+    },
+    {
+      source: '1',
+      sourceHandle: null,
+      target: '6',
+      targetHandle: null,
+      type: 'smoothstep',
+      animated: 'true',
+      id: 'reactflow__edge-1-6'
+    },
+    {
+      source: '6',
+      sourceHandle: null,
+      target: '5',
+      targetHandle: null,
+      type: 'smoothstep',
+      animated: 'true',
+      id: 'reactflow__edge-6-5'
+    },
+    {
+      source: '4',
+      sourceHandle: null,
+      target: '10',
+      targetHandle: null,
+      type: 'smoothstep',
+      animated: 'true',
+      id: 'reactflow__edge-4-10',
+      style: {
+        strokeWidth: 2,
+        stroke: '#FF0072'
+      }
+    },
+    {
+      source: '5',
+      sourceHandle: null,
+      target: '7',
+      targetHandle: null,
+      type: 'smoothstep',
+      animated: 'true',
+      id: 'reactflow__edge-5-7'
+    }
+  ],
+  viewport: {
+    x: 162.61324523335338,
+    y: 116.91615378938587,
+    zoom: 0.6625035085226039
+  }
+};

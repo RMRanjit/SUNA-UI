@@ -1,7 +1,7 @@
 import { IconBrandTabler, IconCpu, IconFolder, IconDatabase, IconMessage, IconMailFast } from '@tabler/icons';
 import { Avatar } from '@mui/material';
 /*to be removed after the back end is implemented */
-import { simpleBlueprint, MicroServices, Datawarehouse } from '../assets/Blueprint/simpleBlueprint';
+import { simpleBlueprint, MicroServices, Datawarehouse, PreCDP } from '../assets/Blueprint/simpleBlueprint';
 /*to be removed after the back end is implemented */
 
 export const currencyFormat = (value) => {
@@ -77,6 +77,9 @@ export const blueprintValues = (Name) => {
       return MicroServices;
     case 'Datawarehouse':
       return Datawarehouse;
+    case 'PreCDP':
+    case 'Pre-CDP':
+      return PreCDP;
     default:
       return { nodes: [], edges: [] };
   }

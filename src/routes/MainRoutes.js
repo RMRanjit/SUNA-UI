@@ -15,6 +15,7 @@ const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialI
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
 
 //setup routes
+const SetupIndex = Loadable(lazy(() => import('views/setup/index')));
 const SetupSubscription = Loadable(lazy(() => import('views/setup/subscription')));
 const SetupOrganization = Loadable(lazy(() => import('views/setup/Organization')));
 const SetupBusinessUnit = Loadable(lazy(() => import('views/setup/businessUnit')));
@@ -74,6 +75,7 @@ const MainRoutes = {
     },
     {
       path: 'setup',
+      // element: <SetupIndex />,
       children: [
         {
           path: '/setup/subscription',

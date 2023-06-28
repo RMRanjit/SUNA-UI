@@ -101,7 +101,7 @@ const TotalPriceLightCard = ({ isLoading, Price = 0 }) => {
 
 TotalPriceLightCard.propTypes = {
   isLoading: PropTypes.bool,
-  Price: PropTypes.number
+  Price: PropTypes.string
 };
 
 export default TotalPriceLightCard;

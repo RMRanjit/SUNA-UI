@@ -60,7 +60,17 @@ const AppIntegration = () => {
 
       {
         accessorKey: 'integrationType',
-        header: 'Type'
+        header: 'Type',
+        Cell: ({ cell, renderedCellValue }) => {
+          let value = cell.getValue();
+          return (
+            <>
+              <Tooltip title={value} placement="right-end">
+                {displayIcon(value)}
+              </Tooltip>
+            </>
+          );
+        }
       }
     ],
     []

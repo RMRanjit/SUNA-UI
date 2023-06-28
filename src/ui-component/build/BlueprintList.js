@@ -7,10 +7,11 @@ import { blueprints } from 'dummy_data/blueprintsDummy';
 
 function BlueprintList(props) {
   return (
+    //lg={4} md={6} sm={6} xs={3}
     <Grid container spacing={0.5}>
       {blueprints.map((blueprint, index) => {
         return (
-          <Grid item xs={3} key={index}>
+          <Grid item lg={3} md={6} sm={8} xs={12} key={index}>
             {/* <BlueprintCard HeaderText={blueprint.name} Caption={blueprint.description} / */}
             <BlueprintCard2 HeaderText={blueprint.name} Caption={blueprint.description} image={blueprint.image} />
           </Grid>

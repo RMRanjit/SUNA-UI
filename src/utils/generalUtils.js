@@ -23,35 +23,36 @@ export const currencyFormat = (value) => {
 export const displayIcon = (type) => {
   let icon, backgroundColor, color, borderColor;
   // Palette from https://colorswall.com/palette/171300
-  switch (type) {
-    case 'cpu':
-    case 'compute':
+  // https://colorswall.com/palette/193 - blue color pallette
+  switch (type.toUpperCase()) {
+    case 'CPU':
+    case 'COMPUTE':
       icon = <IconCpu stroke={1.5} size="1.3rem" />;
-      backgroundColor = '	#f6993f';
+      backgroundColor = '#66c0f4'; //'	#f6993f';
       color = '#ffffff';
       borderColor = backgroundColor;
       break;
-    case 'storage':
+    case 'STORAGE':
       icon = <IconFolder stroke={1.5} size="1.3rem" />;
       backgroundColor = '#6574cd';
       color = '#ffffff';
       borderColor = backgroundColor;
       break;
-    case 'database':
+    case 'DATABASE':
       icon = <IconDatabase stroke={1.5} size="1.3rem" />;
       backgroundColor = '	#3490dc';
       color = '#ffffff';
       borderColor = backgroundColor;
       break;
-    case 'MessageQueue':
+    case 'MESSAGEQUEUE':
       icon = <IconMessage stroke={1.5} size="1.3rem" />;
-      backgroundColor = '#9bddb1';
+      backgroundColor = '#c7d5e0'; //'#9bddb1';
       color = '#000000';
       borderColor = backgroundColor;
       break;
-    case 'function':
+    case 'FUNCTION':
       icon = <IconMathFunction stroke={1.5} size="1.3rem" />;
-      backgroundColor = '#4dc0b5';
+      backgroundColor = '#8592c4'; //'#2a475e'; //'#4dc0b5';
       color = '#ffffff';
       borderColor = backgroundColor;
       break;
@@ -63,7 +64,7 @@ export const displayIcon = (type) => {
       borderColor = backgroundColor;
       break;
 
-    case 'Realtime':
+    case 'REALTIME':
     case 'API':
       icon = <IconApi stroke={1.5} size="1.3rem" />;
       backgroundColor = '#3490dc';

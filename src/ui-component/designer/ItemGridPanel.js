@@ -1,14 +1,11 @@
 import { useCallback, useContext, useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import MUIDataTable from 'mui-datatables';
 import { MaterialReactTable } from 'material-react-table';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { NodesContext } from './Nodes/NodesContext';

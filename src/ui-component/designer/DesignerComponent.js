@@ -1,22 +1,21 @@
 import { useState, useContext, useEffect } from 'react';
 import propTypes from 'prop-types';
-import { Tabs, Tab, Divider } from '@mui/material';
+import { Tabs, Tab, Divider, Box, Drawer } from '@mui/material';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { styled, useTheme } from '@mui/material/styles';
 
 // project imports
 // import { CatalogList } from './CatalogList';
-import DesignerMenu from './DesignerMenu';
-import FlowPanel from './FlowPanel';
+
+import CatalogList from 'ui-component/build/CatalogList';
+import ItemFlowPanel from './ItemFlowPanel';
 import ItemGridPanel from './ItemGridPanel';
 
-import { currencyFormat } from 'utils/generalUtils';
-import { NodesContext } from './Nodes/NodesContext';
-import ActionPanel from './ActionPanel';
-// import SpeedDialPanel from './SpeedDialPanel';
 import TotalPriceLightCard from './TotalPriceLightCard';
 
-const DesignerComponent = ({ showCatalog = true }) => {
-  const [totalPrice, setTotalPrice] = useState(0);
-  const { nodes } = useContext(NodesContext);
+const DesignerComponent = ({ showCatalog }) => {
+  const [showItemMenuPanel, setShowItemMenuPanel] = useState(showCatalog);
 
   const [value, setValue] = useState('0');
 
@@ -25,17 +24,16 @@ const DesignerComponent = ({ showCatalog = true }) => {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    let sumOfPrice = nodes.reduce((sum, node) => sum + parseFloat(node.data.price), 0);
-    setTotalPrice(sumOfPrice);
-  }, [nodes]);
+  // handle the menu showing
+  const handleShowMenu = (event) => {
+    console.log('show menu toggled');
+    setShowItemMenuPanel(!showItemMenuPanel);
+  };
 
   return (
     <div>
-      {/* <ActionPanel /> */}
-      {/* <SpeedDialPanel /> */}
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <div style={{ width: showCatalog ? '100%' : '90%', alignItems: 'left', minHeight: '500px' }}>
+        <div style={{ width: showItemMenuPanel ? '80%' : '100%', alignItems: 'left', minHeight: '500px' }}>
           <Tabs
             value={value}
             onChange={handleChange}
@@ -46,18 +44,19 @@ const DesignerComponent = ({ showCatalog = true }) => {
             <Tab value="0" label="Visual" />
             <Tab value="1" label="Tabular" />
           </Tabs>
-          {value === '0' && <FlowPanel smallFormat={false} />}
+          {value === '0' && <ItemFlowPanel smallFormat={false} handleShowMenu={handleShowMenu} />}
           {value === '1' && <ItemGridPanel />}
         </div>
 
-        {showCatalog && (
+        {showItemMenuPanel && (
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', marginBottom: '10px', fontSize: '100%', textTransform: 'uppercase', letterSpacing: '2px' }}>
-              <TotalPriceLightCard Price={currencyFormat(totalPrice)} />
+              {/* <TotalPriceLightCard Price={currencyFormat(totalPrice)} /> */}
+              <TotalPriceLightCard />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', overflowX: 'hidden', overflowY: 'auto' }}>
               {/* <CatalogList></CatalogList> */}
-              <DesignerMenu />
+              <CatalogList />
             </div>
             {/* <div
               style={{

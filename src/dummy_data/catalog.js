@@ -1,6 +1,6 @@
 export const catalog = [
   {
-    itemID: 1,
+    id: 1,
     inputs: [],
     outputs: [],
     itemType: 'compute',
@@ -15,7 +15,7 @@ export const catalog = [
     scriptPath: '/virtual-machines/linux/basic-password'
   },
   {
-    itemID: 2,
+    id: 2,
     inputs: [],
     outputs: [],
     itemType: 'compute',
@@ -30,7 +30,7 @@ export const catalog = [
     scriptPath: '/virtual-machines/linux/basic-password'
   },
   {
-    itemID: 3,
+    id: 3,
     inputs: [],
     outputs: [],
     itemType: 'compute',
@@ -45,7 +45,7 @@ export const catalog = [
     scriptPath: '/virtual-machines/linux/basic-password'
   },
   {
-    itemID: 4,
+    id: 4,
     inputs: [],
     outputs: [],
     itemType: 'storage',
@@ -59,7 +59,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 5,
+    id: 5,
     inputs: [],
     outputs: [],
     itemType: 'storage',
@@ -73,7 +73,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 6,
+    id: 6,
     inputs: [],
     outputs: [],
     itemType: 'database',
@@ -87,7 +87,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 7,
+    id: 7,
     inputs: [],
     outputs: [],
     itemType: 'database',
@@ -101,7 +101,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 8,
+    id: 8,
     inputs: [],
     outputs: [],
     itemType: 'database',
@@ -115,7 +115,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 9,
+    id: 9,
     inputs: [],
     outputs: [],
     itemType: 'database',
@@ -129,7 +129,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 10,
+    id: 10,
     inputs: [],
     outputs: [],
     itemType: 'database',
@@ -143,7 +143,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 11,
+    id: 11,
     inputs: [],
     outputs: [],
     itemType: 'MessageQueue',
@@ -157,7 +157,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 12,
+    id: 12,
     inputs: [],
     outputs: [],
     itemType: 'MessageQueue',
@@ -171,7 +171,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 13,
+    id: 13,
     inputs: [],
     outputs: [],
     itemType: 'MessageQueue',
@@ -185,7 +185,7 @@ export const catalog = [
     scriptPath: '/storage/storage-share'
   },
   {
-    itemID: 14,
+    id: 14,
     inputs: [],
     outputs: [],
     itemType: 'function',
@@ -200,7 +200,7 @@ export const catalog = [
     scriptPath: '/app-service/function-basic'
   },
   {
-    itemID: 15,
+    id: 15,
     inputs: [],
     outputs: [],
     itemType: 'compute',
@@ -214,7 +214,7 @@ export const catalog = [
     scriptPath: '/Container/Container'
   },
   {
-    itemID: 16,
+    id: 16,
     inputs: [],
     outputs: [],
     itemType: 'MessageQueue',

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Handle, useNodeId } from 'reactflow';
 import styled from 'styled-components';
-import CatalogItem from '../CatalogItem';
+import CatalogItem from '../../build/CatalogItem';
 import { useTheme } from '@mui/material/styles';
 
 const Container = styled.div`
@@ -132,10 +132,10 @@ export default memo(({ data, isConnectable }) => {
         </Header>
 
         <div style={{ padding: 5, display: 'flex', flexDirection: 'column', backgroundColor: theme.palette.background.default }}>
-          <CatalogItem nodeData={data} />
+          <CatalogItem nodeData={data} showIcon={true} />
         </div>
 
-        <Footer>{data.Destination}</Footer>
+        <Footer>{data.Destination || data.id}</Footer>
       </Container>
     </>
   );

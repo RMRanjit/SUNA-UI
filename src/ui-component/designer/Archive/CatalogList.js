@@ -16,11 +16,11 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 
-import CatalogItem from './CatalogItem';
+import CatalogItem from '../build/CatalogItem';
 import { catalog } from 'dummy_data/catalog';
 import { displayIcon } from 'utils/generalUtils';
 
-export const DesignerMenuHeader = ({ Header }) => {
+export const CatalogMenuHeader = ({ Header }) => {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const handleClick = () => setOpen(!open);
@@ -30,13 +30,13 @@ export const DesignerMenuHeader = ({ Header }) => {
   };
 
   const list = (item) => (
-    <List disablePadding>
+    <List disablePadding key={'DetailedList-' & item}>
       {catalog
         .filter((c) => c.itemType == item)
         .map((node, index) => (
           <>
             <ListItem
-              key={node.name}
+              key={'Items-' & node.name}
               style={{ display: 'flex', cursor: 'grab', borderBottom: '2px' }}
               //marginBottom: theme.spacing(1),
               onDragStart={(event) => onDragStart(event, node)}
@@ -44,7 +44,7 @@ export const DesignerMenuHeader = ({ Header }) => {
               //    disablePadding
               //disableGutters={true}
             >
-              <CatalogItem key={node.name} nodeData={node} />
+              <CatalogItem key={'CI-' & node.name} nodeData={node} />
             </ListItem>
             <Divider variant="inset" component="li" key={'div' & index} />
           </>
@@ -54,32 +54,32 @@ export const DesignerMenuHeader = ({ Header }) => {
 
   return (
     <>
-      <ListItemButton onClick={handleClick}>
+      <ListItemButton key={'ListButton-' & Header} onClick={handleClick}>
         {displayIcon(Header)}
-        <ListItemText primary={Header} style={{ minWidth: '250px', textTransform: 'uppercase' }} />
+        <ListItemText key={'ListItemText-' & Header} primary={Header} style={{ minWidth: '250px', textTransform: 'uppercase' }} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      <Collapse in={open} key={'Collapse-' & Header} timeout="auto" unmountOnExit>
         {list(Header)}
       </Collapse>
     </>
   );
 };
 
-DesignerMenuHeader.propTypes = { Header: PropTypes.string };
+CatalogMenuHeader.propTypes = { Header: PropTypes.string };
 
-export const DesignerMenu = (props) => {
+export const CatalogList = (props) => {
   const itemTypes = [...new Set(catalog.map((item) => item.itemType))];
 
   return (
     <div>
       {itemTypes.map((item, index) => (
-        <DesignerMenuHeader key={item} Header={item} />
+        <CatalogMenuHeader key={item.name & '-' & index} Header={item} />
       ))}
     </div>
   );
 };
 
-DesignerMenu.propTypes = {};
+CatalogList.propTypes = {};
 
-export default DesignerMenu;
+export default CatalogList;

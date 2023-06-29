@@ -49,20 +49,7 @@ export default memo(({ data, isConnectable }) => {
         style={{ background: theme.palette.primary.dark, marginRight: '-10px', width: '12px', height: '12px' }}
       ></Handle>
       <Container>
-        <Tooltip title={data.configuration}>
-          {/* <Avatar
-            sx={{
-              color: theme.palette.primary.dark,
-              backgroundColor: theme.palette.primary.light,
-              border: 'none',
-              borderColor: theme.palette.primary.main
-            }}
-            // style={{ width: 40, height: 40 }} variant="circular"
-          >
-            {displayIcon(data.itemType)}
-          </Avatar> */}
-          {displayIcon(data.itemType)}
-        </Tooltip>
+        <Tooltip title={data.configuration}>{displayIcon(data.categories[0].name)}</Tooltip>
         {/* <Footer> {data.name}-{nodeId}</Footer> */}
         <Footer>{data.Name}</Footer>
       </Container>

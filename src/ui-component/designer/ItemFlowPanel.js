@@ -18,15 +18,16 @@ import itemNode from './Nodes/itemNode';
 import minNode from './Nodes/minNode';
 import containerNode from './Nodes/containerNode';
 import { NodesContext } from './Nodes/NodesContext';
-import { FormGroup, FormControlLabel, Switch } from '@mui/material';
 
-import { Box, SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
+import { SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
 
 import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import PrintIcon from '@mui/icons-material/Print';
 import ShareIcon from '@mui/icons-material/Share';
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import PhotoSizeSelectSmallIcon from '@mui/icons-material/PhotoSizeSelectSmall';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 const defaultViewport = { x: 0, y: 0, zoom: 0.25 };
 
@@ -40,10 +41,11 @@ const defaultViewport = { x: 0, y: 0, zoom: 0.25 };
 //   containerNode: containerNode
 // };
 
-function FlowPanel(props, ref) {
-  const { smallFormat = false } = props;
+function ItemFlowPanel(props, ref) {
+  const { smallFormat = false, handleShowMenu } = props;
   const { nodes, setNodes, edges, setEdges, nodeID, setNodeID } = useContext(NodesContext);
   const [concise, setConcise] = useState(smallFormat);
+  const [showMap, setShowMap] = useState(false);
 
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
@@ -79,6 +81,10 @@ function FlowPanel(props, ref) {
     // setEdges(simpleBlueprint.edges);
     // setNodeID(simpleBlueprint.nodes.length + 1);
     console.log('Handle Load');
+  };
+
+  const handleShowMap = () => {
+    setShowMap(!showMap);
   };
 
   const handleSave = () => {
@@ -143,16 +149,27 @@ function FlowPanel(props, ref) {
       });
 
       const parsedNode = JSON.parse(type);
-
-      let NodeType = parsedNode.NodeType;
+      console.log('parsedNode', parsedNode);
+      // if the nodeType is missing, then just make it the default one
+      let NodeType = parsedNode.NodeType === undefined ? 'itemNode' : parsedNode.NodeType;
       let id = getId();
-      let Name = parsedNode.itemType + '-' + id;
+      let Name = parsedNode.name + '-' + id;
+      //let Name = parsedNode.itemType + '-' + id;
       //let id = nodeID;
       //setNodeID(nodeID+1);
 
+      //if the price is missing on the parsed node, add the property there
+      if (parsedNode.price === undefined) {
+        parsedNode.price = 0.0;
+      }
+
+      console.log('inside flowpanel: parsedNode.itemType is', parsedNode.itemType);
+      if (parsedNode.itemType === undefined) {
+        parsedNode.itemType = parsedNode.categories[0].name;
+      }
+
       //console.log("new node ID generated is " + id) ;
       // let id = nodes.length + 1;
-      //let id = Math.floor(new Date().valueOf() * Math.random())
       //console.log('Flow:Adding node with id', id);
       parsedNode.onDelete = onDelete;
 
@@ -163,7 +180,7 @@ function FlowPanel(props, ref) {
         data: { Name: `${Name} `, id: id, ...parsedNode }
       };
 
-      console.log(newNode);
+      //console.log(newNode);
       setNodes((nds) => nds.concat(newNode));
       setNodeID(nodeID + 1);
     },
@@ -194,27 +211,29 @@ function FlowPanel(props, ref) {
           fitView
           //attributionPosition="bottom-left"
         >
-          <MiniMap
-            nodeStrokeColor={(n) => {
-              if (n.style?.background) return n.style.background;
-              if (n.type === 'itemNode' || n.type === 'miniNode') return '#0041d0';
-              if (n.type === 'containerNode') return '#ff0072';
-              if (n.type === 'default') return '#1a192b';
+          {showMap && (
+            <MiniMap
+              nodeStrokeColor={(n) => {
+                if (n.style?.background) return n.style.background;
+                if (n.type === 'itemNode' || n.type === 'miniNode') return '#0041d0';
+                if (n.type === 'containerNode') return '#ff0072';
+                if (n.type === 'default') return '#1a192b';
 
-              return '#eee';
-            }}
-            nodeColor={(n) => {
-              if (n.style?.background) return n.style.background;
+                return '#eee';
+              }}
+              nodeColor={(n) => {
+                if (n.style?.background) return n.style.background;
 
-              return '#fff';
-            }}
-            nodeBorderRadius={2}
-          />
+                return '#fff';
+              }}
+              nodeBorderRadius={2}
+            />
+          )}
           <Controls />
           <Background color="#aaa" gap={10} />
           <Panel position="top-right">
             <SpeedDial
-              ariaLabel="SpeedDial basic example"
+              ariaLabel="SpeedDial for Flow"
               // sx={{ position: 'absolute', bottom: 0, right: 0 }}
               icon={<SpeedDialIcon />}
               direction="left"
@@ -225,7 +244,14 @@ function FlowPanel(props, ref) {
                 tooltipTitle={concise ? 'Large Version' : 'Small Version'}
                 onClick={handleVisualChange}
               />
+              <SpeedDialAction key="Menu" icon={<MenuOutlinedIcon />} tooltipTitle="Toggle Menu" onClick={handleShowMenu} />
               <SpeedDialAction key="Load" icon={<FileCopyIcon />} tooltipTitle="Load" onClick={handleLoad} />
+              <SpeedDialAction
+                key="Map"
+                icon={<MapOutlinedIcon />}
+                tooltipTitle={showMap ? 'Hide Map' : 'Show Map'}
+                onClick={handleShowMap}
+              />
               <SpeedDialAction key="Save" icon={<SaveIcon />} tooltipTitle="Save" onClick={handleSave} />
               <SpeedDialAction key="Print" icon={<PrintIcon />} tooltipTitle="Print" onClick={handlePrint} />
               <SpeedDialAction key="Share" icon={<ShareIcon />} tooltipTitle="Share" onClick={handleShare} />
@@ -237,16 +263,16 @@ function FlowPanel(props, ref) {
   );
 }
 
-FlowPanel.defaultProps = {
+ItemFlowPanel.defaultProps = {
   smallFormat: true,
   initID: 0
 };
 
-FlowPanel.propTypes = {
+ItemFlowPanel.propTypes = {
   smallFormat: propTypes.bool,
   initID: propTypes.number
 };
 
-export default FlowPanel;
+export default ItemFlowPanel;
 //export default forwardRef(FlowPanel);
 // Good reference to useImperativeHandle is @ https://blog.webdevsimplified.com/2022-06/use-imperative-handle/

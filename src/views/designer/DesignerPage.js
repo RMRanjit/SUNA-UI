@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import DesignerComponent from 'ui-component/designer/DesignerComponent';
-import FlowPanel from 'ui-component/designer/FlowPanel';
+import FlowPanel from 'ui-component/designer/ItemFlowPanel';
 import { NodesContextProvider } from 'ui-component/designer/Nodes/NodesContext';
 
 /*to be removed after the back end is implemented */

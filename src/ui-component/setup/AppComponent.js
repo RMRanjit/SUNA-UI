@@ -96,7 +96,7 @@ const AppComponent = () => {
           let value = cell.getValue();
           return (
             <>
-              {displayIcon(value)} {value}
+              <Tooltip title={value}>{displayIcon(value)}</Tooltip>
             </>
           );
         }

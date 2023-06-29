@@ -134,7 +134,7 @@ export const ItemGridPanel = (props) => {
   );
 
   return (
-    <div style={{ flex: 1, flexDirection: 'row' }} onDrop={onDrop} onDragOver={onDragOver}>
+    <div onDrop={onDrop} onDragOver={onDragOver}>
       <MaterialReactTable
         columns={columns}
         data={nodes}

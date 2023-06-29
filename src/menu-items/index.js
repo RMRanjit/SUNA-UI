@@ -8,7 +8,7 @@ import plan from './plan';
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-  items: [dashboard, plan, setup] //, pages, utilities, other
+  items: [dashboard, plan, setup, other] //, pages, utilities, other
 };
 
 export default menuItems;

@@ -18,7 +18,7 @@ function BlueprintCard2({ HeaderText, Caption, image }) {
 
   //"/static/images/cards/contemplative-reptile.jpg"
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardMedia sx={{ height: 140 }} image={image} alt="test" title="green iguana">
         {/* <img src={image} alt={image} /> */}
       </CardMedia>
@@ -26,7 +26,18 @@ function BlueprintCard2({ HeaderText, Caption, image }) {
         <Typography gutterBottom variant="h5" component="div">
           {HeaderText}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          //Included this to limit the number of lines to 4
+          sx={{
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: '4',
+            WebkitBoxOrient: 'vertical'
+          }}
+          variant="body2"
+          color="text.secondary"
+        >
           {Caption}
         </Typography>
       </CardContent>

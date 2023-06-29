@@ -49,7 +49,7 @@ export default memo(({ data, isConnectable }) => {
         style={{ background: theme.palette.primary.dark, marginRight: '-10px', width: '12px', height: '12px' }}
       ></Handle>
       <Container>
-        <Tooltip title={data.configuration}>{displayIcon(data.categories[0].name)}</Tooltip>
+        <Tooltip title={data.configuration || data.summary}>{displayIcon(data.itemType || data.categories[0].name)}</Tooltip>
         {/* <Footer> {data.name}-{nodeId}</Footer> */}
         <Footer>{data.Name}</Footer>
       </Container>

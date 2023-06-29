@@ -50,23 +50,12 @@ const DesignerComponent = ({ showCatalog }) => {
 
         {showItemMenuPanel && (
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', marginBottom: '10px', fontSize: '100%', textTransform: 'uppercase', letterSpacing: '2px' }}>
-              {/* <TotalPriceLightCard Price={currencyFormat(totalPrice)} /> */}
+            <div style={{ display: 'flex', marginBottom: '2px', fontSize: '100%', textTransform: 'uppercase', letterSpacing: '2px' }}>
               <TotalPriceLightCard />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', overflowX: 'hidden', overflowY: 'auto' }}>
-              {/* <CatalogList></CatalogList> */}
               <CatalogList />
             </div>
-            {/* <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                letterSpacing: '2px'
-              }}
-            >
-              <ActionPanel />
-            </div> */}
           </div>
         )}
       </div>

@@ -9,7 +9,7 @@ import { NodesContextProvider } from 'ui-component/designer/Nodes/NodesContext';
 /*to be removed after the back end is implemented */
 import { blueprintValues } from 'utils/generalUtils';
 
-const DesignerPage = (props) => {
+const DesignerPage = () => {
   const { Name } = useParams();
 
   //setup the initial nodes and edges. If the name is undefined, then it returns an empty node and edge array.
@@ -19,7 +19,8 @@ const DesignerPage = (props) => {
     <MainCard>
       <NodesContextProvider initialNodes={initialObject.nodes} initialEdges={initialObject.edges}>
         {/* {Name != undefined ? <DesignerComponent /> : <FlowPanel />} */}
-        <DesignerComponent />
+        {/*if there is a name already, there should be nodes, so dont show the catalog, they can always toggle it in the Speed Action dial */}
+        <DesignerComponent showCatalog={Name === undefined} />
       </NodesContextProvider>
     </MainCard>
   );

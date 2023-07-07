@@ -24,17 +24,18 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 // project imports
 import { MaterialReactTable } from 'material-react-table';
+import { getOrganizations } from 'dummy_data/setupDummy';
 
-const data = [
-  { name: 'PFNA', subscription: 'PFNA-Subscription', Activated: true },
-  { name: 'PBNA', subscription: 'PBNA-Subscription', Activated: true },
-  { name: 'AMESA', subscription: 'AMESA-Subscription', Activated: true },
-  { name: 'ESSA', subscription: 'CORP-IT-Subscription', Activated: true },
-  { name: 'CORP-IT', subscription: 'CORP-IT-Subscription', Activated: true }
-];
+// const data = [
+//   { name: 'PFNA', subscription: 'PFNA-Subscription', Activated: true },
+//   { name: 'PBNA', subscription: 'PBNA-Subscription', Activated: true },
+//   { name: 'AMESA', subscription: 'AMESA-Subscription', Activated: true },
+//   { name: 'ESSA', subscription: 'CORP-IT-Subscription', Activated: true },
+//   { name: 'CORP-IT', subscription: 'CORP-IT-Subscription', Activated: true }
+// ];
 
 const OrganizationComponent = () => {
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState(getOrganizations());
   const [openAddDialog, setOpenAddDialog] = useState(false);
 
   const ADD_TEXT = 'Add';
@@ -48,7 +49,7 @@ const OrganizationComponent = () => {
         size: 150
       },
       {
-        accessorKey: 'subscription',
+        accessorKey: 'parent',
         header: 'Subscription',
         size: 150
       },

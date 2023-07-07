@@ -19,53 +19,20 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { MaterialReactTable } from 'material-react-table';
 
-const columns = [
-  {
-    name: 'name',
-    label: 'Name',
-    options: {
-      filter: true,
-      sort: true
-    }
-  },
-  {
-    name: 'company',
-    label: 'Company',
-    options: {
-      filter: true,
-      sort: false
-    }
-  },
-  {
-    name: 'city',
-    label: 'City',
-    options: {
-      filter: true,
-      sort: false
-    }
-  },
-  {
-    name: 'state',
-    label: 'State',
-    options: {
-      filter: true,
-      sort: false
-    }
-  }
-];
+import { getSubscriptions } from 'dummy_data/setupDummy';
 
-const data = [
-  { name: 'PFNA-Subscription', subscription: '0000-0000-0000-0000', status: true },
-  { name: 'PBNA-Subscription', subscription: '0000-0000-0000-0000', status: true },
-  { name: 'AMESA-Subscription', subscription: '0000-0000-0000-0000', status: true },
-  { name: 'ESSA-Subscription', subscription: '0000-0000-0000-0000', status: true },
-  { name: 'CORP-IT-Subscription', subscription: '0000-0000-0000-0000', status: true }
-];
+// const data = [
+//   { name: 'PFNA-Subscription', subscription: '0000-0000-0000-0000', status: true },
+//   { name: 'PBNA-Subscription', subscription: '0000-0000-0000-0000', status: true },
+//   { name: 'AMESA-Subscription', subscription: '0000-0000-0000-0000', status: true },
+//   { name: 'ESSA-Subscription', subscription: '0000-0000-0000-0000', status: true },
+//   { name: 'CORP-IT-Subscription', subscription: '0000-0000-0000-0000', status: true }
+// ];
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const SubscriptionComponent = () => {
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState(getSubscriptions());
   const [openAddDialog, setOpenAddDialog] = useState(false);
   const ADD_TEXT = 'Add';
   const CANCEL_TEXT = 'Cancel';
@@ -125,7 +92,7 @@ const SubscriptionComponent = () => {
   };
 
   const onClick = (event) => {
-    props.NotificationEvent('Message from Organization');
+    props.NotificationEvent('Message from Subscription');
     event.preventDefault();
   };
 

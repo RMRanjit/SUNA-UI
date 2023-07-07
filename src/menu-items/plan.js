@@ -18,6 +18,14 @@ const plan = {
       url: '/designer',
       icon: icons.IconBrush,
       breadcrumbs: false
+    },
+    {
+      id: 'createBlueprint',
+      title: 'Create Blueprint',
+      type: 'item',
+      url: '/designer',
+      icon: icons.IconBrush,
+      breadcrumbs: false
     }
   ]
 };

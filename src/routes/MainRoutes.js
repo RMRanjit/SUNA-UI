@@ -24,10 +24,15 @@ const SetupProject = Loadable(lazy(() => import('views/setup/Project')));
 const SetupApplication = Loadable(lazy(() => import('views/setup/Application')));
 const SetupAppComponents = Loadable(lazy(() => import('views/setup/AppComponent')));
 const SetupIntegration = Loadable(lazy(() => import('views/setup/AppIntegrations')));
-const BuildBlueprint = Loadable(lazy(() => import('views/build/BlueprintPage')));
+//const BuildBlueprint = Loadable(lazy(() => import('views/plan/BlueprintPage')));
 
+// Blueprint Routings
+const Blueprint = Loadable(lazy(() => import('views/plan/BlueprintPage')));
+
+//Catalog Routings
+const Catalog = Loadable(lazy(() => import('views/plan/CatalogPage')));
 //designer routings
-const DesignerPage = Loadable(lazy(() => import('views/designer/DesignerPage')));
+const DesignerPage = Loadable(lazy(() => import('views/plan/DesignerPage')));
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
@@ -56,7 +61,20 @@ const MainRoutes = {
       children: [
         {
           path: '/build/blueprints',
-          element: <BuildBlueprint />
+          element: <Blueprint />
+        }
+      ]
+    },
+    {
+      path: 'blueprint',
+      children: [
+        {
+          path: '/blueprint',
+          element: <Blueprint />
+        },
+        {
+          path: '/blueprint/:Name',
+          element: <DesignerPage />
         }
       ]
     },
@@ -74,9 +92,22 @@ const MainRoutes = {
       ]
     },
     {
-      path: 'setup',
-      // element: <SetupIndex />,
+      path: 'catalog',
       children: [
+        {
+          path: '/catalog',
+          element: <Catalog />
+        }
+      ]
+    },
+    {
+      path: '/setup',
+      //element: <SetupIndex />,
+      children: [
+        {
+          path: '/setup/',
+          element: <SetupIndex />
+        },
         {
           path: '/setup/subscription',
           element: <SetupSubscription />

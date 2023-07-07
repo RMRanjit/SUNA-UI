@@ -19,13 +19,16 @@ function BlueprintCard2({ HeaderText, Caption, image }) {
   //"/static/images/cards/contemplative-reptile.jpg"
   return (
     <Card>
-      <CardMedia sx={{ height: 140 }} image={image} alt="test" title="green iguana">
-        {/* <img src={image} alt={image} /> */}
-      </CardMedia>
+      <CardMedia sx={{ height: 140 }} image={image} alt="test" title="green iguana"></CardMedia>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          variant="h4"
+          component="div"
+          //style={{ paddingLeft: '1rem', marginTop: '10px', backgroundColor: 'white', opacity: '0.25' }}
+        >
           {HeaderText}
         </Typography>
+
         <Typography
           //Included this to limit the number of lines to 4
           sx={{

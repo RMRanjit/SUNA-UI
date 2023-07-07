@@ -39,31 +39,32 @@ export const CategoryHeader = ({ category, catalog }) => {
 
   const list = () => (
     // component={Stack} direction="row"
-    <List disablePadding key={'DetailedList-' + category}>
-      {catalog.map((node, index) => (
-        <>
+    <List disablePadding>
+      {catalog.map((node, index) => {
+        //console.log('CI-' + category + '-' + node.name + '-' + index);
+        return (
           <ListItem
-            key={'Items-' + node.name + '-' + index}
+            key={'Items-' + category + '-' + node.name + '-' + index}
             style={{ display: 'flex', cursor: 'grab', borderBottom: '2px' }}
             //marginBottom: theme.spacing(1),
             onDragStart={(event) => onDragStart(event, node)}
             draggable
           >
-            <CatalogItem key={'CI-' + node.name + '-' + index} nodeData={node} maxWidth={'100%'} />
+            <CatalogItem nodeData={node} maxWidth={'100%'} />
           </ListItem>
-        </>
-      ))}
+        );
+      })}
     </List>
   );
 
   return (
     <>
-      <ListItemButton key={'ListButton-' + category} onClick={handleClick}>
+      <ListItemButton onClick={handleClick}>
         {displayIcon(category)}
-        <ListItemText key={'ListItemText-' + category} primary={category} style={{ minWidth: '300px', textTransform: 'uppercase' }} />
+        <ListItemText primary={category} style={{ minWidth: '300px', textTransform: 'uppercase' }} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={open} key={'Collapse-' + category} timeout="auto" unmountOnExit>
+      <Collapse in={open} timeout="auto" unmountOnExit>
         {list()}
       </Collapse>
     </>
